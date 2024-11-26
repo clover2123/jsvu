@@ -26,7 +26,7 @@ const test = async ({ binary }) => {
     const program = `print('Hi!');\n`;
     fs.writeFileSync(path, program);
     console.assert(
-        (await execa(`${jsvuBinPath}/${binary}`, [path])).stdout === 'Hi!'
+        (await execa(`${jsvuBinPath}/${binary}`, ['-f', path])).stdout === 'Hi!'
     );
     console.assert(
         (await execa(`${jsvuBinPath}/${binary}`, ['-e', program])).stdout === 'Hi!'
